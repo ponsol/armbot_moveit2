@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="servoarm">
+
+  <xacro:include filename="arm.xacro" />
+  <xacro:arm />
+
+  <xacro:include filename="hand.xacro" />
+  <xacro:hand />
+
+  <group name="arm_hand">
+    <group name="arm" />
+    <group name="hand" />
+  </group>
+
+
+  <group_state name="open" group="hand">
+     <joint name="hand_joint" value="0" />
+     <joint name="clawl_joint" value="0.035" />
+     <joint name="clawr_joint" value="0" />
+  </group_state>
+
+  <group_state name="close" group="hand">
+     <joint name="clawl_joint" value="0" />
+     <joint name="clawr_joint" value="0" />
+     <joint name="hand_joint" value="0" />
+  </group_state>
+
+
+  <virtual_joint name="virtual_joint" type="floating" parent_frame="world" child_link="base_link" />
+
+  <end_effector name="hand" parent_link="eef_link" group="hand" parent_group="arm" />
+
+
+    <disable_collisions link1="base_link" link2="lower_arm" reason="Never"/>
+    <disable_collisions link1="base_link" link2="platform" reason="Adjacent"/>
+
+
+    <disable_collisions link1="clawbase" link2="lower_arm" reason="Never"/>
+    <disable_collisions link1="clawbase" link2="platform" reason="Never"/>
+    <disable_collisions link1="clawbase" link2="top_arm" reason="Never"/>
+    <disable_collisions link1="clawbase" link2="wrist" reason="Adjacent"/>
+    <disable_collisions link1="clawl" link2="clawr" reason="Never"/>
+    <disable_collisions link1="clawl" link2="lower_arm" reason="Never"/>
+    <disable_collisions link1="clawl" link2="platform" reason="Never"/>
+    <disable_collisions link1="clawl" link2="top_arm" reason="Never"/>
+    <disable_collisions link1="clawl" link2="wrist" reason="Never"/>
+    <disable_collisions link1="clawr" link2="lower_arm" reason="Never"/>
+    <disable_collisions link1="clawr" link2="platform" reason="Never"/>
+    <disable_collisions link1="clawr" link2="top_arm" reason="Never"/>
+    <disable_collisions link1="clawr" link2="wrist" reason="Never"/>
+    <disable_collisions link1="lower_arm" link2="platform" reason="Adjacent"/>
+    <disable_collisions link1="lower_arm" link2="top_arm" reason="Adjacent"/>
+    <disable_collisions link1="lower_arm" link2="wrist" reason="Never"/>
+    <disable_collisions link1="platform" link2="wrist" reason="Never"/>
+    <disable_collisions link1="top_arm" link2="wrist" reason="Adjacent"/>
+
+
+    <disable_collisions link1="clawbase" link2="clawr" reason="Adjacent" />
+    <disable_collisions link1="clawbase" link2="clawl" reason="Adjacent" />
+    <disable_collisions link1="clawr" link2="clawl" reason="Default" />
+
+
+</robot>
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="arm">
+  <xacro:macro name="arm">
+
+
+    <group name="arm">
+	    <!--
+        <link name="base_link"/>
+        <link name="platform"/>
+        <link name="lower_arm"/>
+        <link name="top_arm"/>
+        <link name="wrist"/>
+
+        <joint name="base_joint"/>
+        <joint name="platform_joint"/>
+        <joint name="lower_joint"/>
+        <joint name="top_joint"/>
+	    -->
+        <chain base_link="base_link" tip_link="eef_link"/>
+    </group>
+
+
+    <group_state name="ready" group="arm">
+      <joint name="base_joint" value="0.017" />
+      <joint name="platform_joint" value="0.017" />
+      <joint name="lower_joint" value="0.017" />
+      <joint name="top_joint" value="0.017" />
+    </group_state>
+
+    <group_state name="pose1" group="arm">
+      <joint name="base_joint" value="1.0" />
+      <joint name="platform_joint" value="1.0" />
+      <joint name="lower_joint" value="0.017" />
+      <joint name="top_joint" value="0.017" />
+    </group_state>
+
+    <group_state name="extended" group="arm">
+      <joint name="base_joint" value="0.5" />
+      <joint name="platform_joint" value="0.5" />
+      <joint name="lower_joint" value="0.5" />
+      <joint name="top_joint" value="0.5" />
+    </group_state>
+
+  </xacro:macro>
+</robot>

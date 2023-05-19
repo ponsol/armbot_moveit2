@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: armbot_moveit2
+    relative_path: urdf/arm.urdf
+  SRDF:
+    relative_path: config/servoarm.srdf.xacro
+  CONFIG:
+    author_name: SJK
+    author_email: sjk@sjk.com
+    generated_timestamp: 1519152260

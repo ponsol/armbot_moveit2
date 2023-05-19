@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<!--
+
+    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
+	-->
+
+    <xacro:macro name="arm_ros2_control"  params="name initial_positions_file ros2_control_hardware_type">
+    <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_positions']}"/>
+
+        <ros2_control name="${name}" type="system">
+
+            <hardware>
+
+                <xacro:if value="${ros2_control_hardware_type == 'mock_components'}">
+                  <plugin>mock_components/GenericSystem</plugin>
+                </xacro:if>
+                <xacro:if value="${ros2_control_hardware_type == 'isaac'}">
+                    <plugin>topic_based_ros2_control/TopicBasedSystem</plugin>
+                    <param name="joint_commands_topic">/isaac_joint_commands</param>
+                    <param name="joint_states_topic">/isaac_joint_states</param>
+                </xacro:if>
+
+            </hardware>
+
+
+
+
+            <joint name="base_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['platform_joint']}</param>
+                </state_interface>
+                <state_interface name="velocity">
+			<param name="initial_value">0.0</param>
+	        </state_interface>
+            </joint>
+
+
+            <joint name="platform_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['platform_joint']}</param>
+                </state_interface>
+                <state_interface name="velocity">
+			<param name="initial_value">0.0</param>
+	        </state_interface>
+            </joint>
+
+
+            <joint name="lower_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['lower_joint']}</param>
+                </state_interface>
+                <state_interface name="velocity">
+			<param name="initial_value">0.0</param>
+	        </state_interface>
+            </joint>
+            <joint name="top_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['top_joint']}</param>
+                </state_interface>
+                <state_interface name="velocity">
+			<param name="initial_value">0.0</param>
+	        </state_interface>
+            </joint>
+
+        </ros2_control>
+    </xacro:macro>
+</robot>
+
+
+
+
+
