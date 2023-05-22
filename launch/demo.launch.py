@@ -9,7 +9,7 @@ from ament_index_python.packages import get_package_share_directory
 
 from moveit_configs_utils import MoveItConfigsBuilder
 from moveit_configs_utils.launches import generate_demo_launch
-import yaml
+
 
 
 
@@ -35,18 +35,13 @@ def generate_launch_description():
     moveit_config = (
           MoveItConfigsBuilder("servoarm", package_name="armbot_moveit2")
           .robot_description(file_path="config/servoarm.urdf.xacro",
-            #mappings={
-            #    "ros2_control_hardware_type": LaunchConfiguration(
-            #        "ros2_control_hardware_type"
-            #    )
-            #},
           )
           .planning_scene_monitor(
             publish_robot_description=True, publish_robot_description_semantic=True 
             #,publish_planning_scene=True,	publish_geometry_updates = True
           )
           .trajectory_execution(file_path="config/gripper_moveit_controllers.yaml")
-          #.robot_description_kinematics(file_path="config/kinematics.yaml")
+          .robot_description_kinematics(file_path="config/kinematics.yaml")
           .planning_pipelines(
             pipelines=["ompl", "chomp", "pilz_industrial_motion_planner"]
           )
@@ -106,7 +101,7 @@ def generate_launch_description():
         output="both",
         parameters=[
             moveit_config.robot_description,
-            #moveit_config.robot_description_kinematics,
+            moveit_config.robot_description_kinematics,
             #{"use_sim_time": True},
             ],
     )
@@ -120,7 +115,8 @@ def generate_launch_description():
     ros2_control_node = Node(
         package="controller_manager",
         executable="ros2_control_node",
-        parameters=[moveit_config.robot_description, ros2_controllers_path],
+        parameters=[
+            moveit_config.robot_description, ros2_controllers_path],
         output="screen",
     )
 

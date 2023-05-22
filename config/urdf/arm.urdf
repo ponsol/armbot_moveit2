@@ -213,19 +213,22 @@
     </link>
 
 
-    <joint name="clawl_joint" type="revolute">
+    <joint name="clawl_joint" type="prismatic">
         <parent link="clawbase" />
         <child link="clawl" />
         <origin rpy="0 0 0.31" xyz="-0.142 0.305 -0.05"/> <axis xyz="0 0 1" />
         <limit effort="87" lower="0.0" upper="0.4" velocity="0.2" />
     </joint>
 
-    <joint name="clawr_joint" type="revolute">
+    <joint name="clawr_joint" type="prismatic">
         <parent link="clawbase" />
         <child link="clawr" />
         <origin rpy="0 0 -0.31" xyz="0.152 0.305 -0.05"/> <axis xyz="0 0 1" />
         <limit effort="87" lower="-0.4" upper="0.0" velocity="0.2" />
+	<!--
         <mimic joint="clawl_joint" multiplier="-1" offset="0" />
+	-->
+        <mimic joint="clawl_joint" />
     </joint>
 
 

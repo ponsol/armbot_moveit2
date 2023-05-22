@@ -29,12 +29,5 @@ arm_controller:
 
 hand_controller:
   ros__parameters:
-    command_interfaces:
-      - position
-    state_interfaces:
-      - position
-      - velocity
-    joints:
-      - hand_joint
-      - clawl_joint
+    joint: clawl_joint
 

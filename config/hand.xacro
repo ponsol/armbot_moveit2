@@ -1,14 +1,14 @@
 <?xml version="1.0" ?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="arm">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="servoarm">
   <xacro:macro name="hand">
 
     <group name="hand">
-        <joint name="hand_joint"/>
         <link name="clawbase"/>
         <link name="clawr"/>
         <link name="clawl"/>
         <joint name="clawl_joint"/>
         <passive_joint name="clawr_joint"/>
+        <joint name="hand_joint"/>
          <!--
         <chain base_link="eef_link" tip_link="clawl"/>
 	 -->

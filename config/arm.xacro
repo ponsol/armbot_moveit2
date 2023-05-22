@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="arm">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="servoarm">
   <xacro:macro name="arm">
 
 
@@ -18,6 +18,7 @@
 	    -->
         <chain base_link="base_link" tip_link="eef_link"/>
     </group>
+
 
 
     <group_state name="ready" group="arm">
@@ -40,6 +41,23 @@
       <joint name="lower_joint" value="0.5" />
       <joint name="top_joint" value="0.5" />
     </group_state>
+
+
+    <virtual_joint name="virtual_joint" type="floating" parent_frame="world" child_link="base_link" />
+
+    <disable_collisions link1="base_link" link2="platform" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="lower_arm" reason="Never"/>
+
+    <disable_collisions link1="lower_arm" link2="platform" reason="Adjacent"/>
+    <disable_collisions link1="lower_arm" link2="wrist" reason="Never"/>
+
+    <disable_collisions link1="top_arm" link2="lower_arm" reason="Adjacent"/>
+
+    <disable_collisions link1="wrist" link2="top_arm" reason="Adjacent"/>
+
+    <disable_collisions link1="platform" link2="wrist" reason="Never"/>
+
+
 
   </xacro:macro>
 </robot>
