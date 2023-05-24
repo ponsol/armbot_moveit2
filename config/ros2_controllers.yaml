@@ -26,6 +26,7 @@ arm_controller:
       - platform_joint
       - lower_joint
       - top_joint
+      - eef_joint
 
 hand_controller:
   ros__parameters:

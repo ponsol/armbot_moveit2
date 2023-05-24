@@ -14,7 +14,6 @@
 
 
   <group_state name="open" group="hand">
-     <joint name="hand_joint" value="0" />
      <joint name="clawl_joint" value="0.035" />
      <joint name="clawr_joint" value="0" />
   </group_state>
@@ -22,7 +21,9 @@
   <group_state name="close" group="hand">
      <joint name="clawl_joint" value="0" />
      <joint name="clawr_joint" value="0" />
+     <!--
      <joint name="hand_joint" value="0" />
+     -->
   </group_state>
 
 

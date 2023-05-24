@@ -20,6 +20,7 @@ moveit_simple_controller_manager:
       - platform_joint
       - lower_joint
       - top_joint
+      - eef_joint
 
   hand_controller:
     action_ns: gripper_cmd

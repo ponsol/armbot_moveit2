@@ -6,3 +6,4 @@ initial_positions:
   top_joint: 0.017
   clawl_joint: 0.017
   hand_joint: 0.017
+  eef_joint: 0.017

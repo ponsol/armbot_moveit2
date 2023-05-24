@@ -22,10 +22,11 @@
 
 
     <group_state name="ready" group="arm">
-      <joint name="base_joint" value="0.017" />
-      <joint name="platform_joint" value="0.017" />
-      <joint name="lower_joint" value="0.017" />
-      <joint name="top_joint" value="0.017" />
+      <joint name="base_joint" value="0.007" />
+      <joint name="platform_joint" value="0.007" />
+      <joint name="lower_joint" value="0.007" />
+      <joint name="top_joint" value="0.007" />
+      <joint name="eef_joint" value="0.0" />
     </group_state>
 
     <group_state name="pose1" group="arm">
@@ -33,6 +34,7 @@
       <joint name="platform_joint" value="1.0" />
       <joint name="lower_joint" value="0.017" />
       <joint name="top_joint" value="0.017" />
+      <joint name="eef_joint" value="0.0" />
     </group_state>
 
     <group_state name="extended" group="arm">
@@ -40,6 +42,7 @@
       <joint name="platform_joint" value="0.5" />
       <joint name="lower_joint" value="0.5" />
       <joint name="top_joint" value="0.5" />
+      <joint name="eef_joint" value="0.0" />
     </group_state>
 
 
