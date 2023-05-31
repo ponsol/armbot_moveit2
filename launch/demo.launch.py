@@ -35,18 +35,26 @@ def generate_launch_description():
     moveit_config = (
           MoveItConfigsBuilder("servoarm", package_name="armbot_moveit2")
           .robot_description(file_path="config/servoarm.urdf.xacro",
+            mappings={
+                "ros2_control_hardware_type": LaunchConfiguration(
+                    "ros2_control_hardware_type"
+                )
+            },
           )
           .planning_scene_monitor(
             publish_robot_description=True, publish_robot_description_semantic=True 
             #,publish_planning_scene=True,	publish_geometry_updates = True
           )
           .trajectory_execution(file_path="config/gripper_moveit_controllers.yaml")
-          .robot_description_kinematics(file_path="config/kinematics.yaml")
           .planning_pipelines(
             pipelines=["ompl", "chomp", "pilz_industrial_motion_planner"]
           )
           .to_moveit_configs()
     )
+
+    move_group_capabilities = {
+        "capabilities": "move_group/ExecuteTaskSolutionCapability"
+    }
 
 
     move_group_node = Node(
@@ -56,6 +64,7 @@ def generate_launch_description():
         arguments=["--ros-args", "--log-level", "info"],
         parameters=[
              moveit_config.to_dict(),
+             move_group_capabilities,
              #{"use_sim_time": True}
          ],
     )

@@ -146,8 +146,6 @@
 
     <link name="eef_link" />
 
-
-
     <joint name="eef_joint" type="revolute">
         <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.33" soft_upper_limit="2.33" />
         <limit effort="87" lower="-2.34" upper="2.34" velocity="2.3925" />
@@ -156,7 +154,6 @@
         <child link="eef_link" />
 	<axis xyz="0 1 0" />
     </joint>
-
 
    <joint name="hand_joint" type="fixed">
         <parent link="eef_link" />
@@ -248,9 +245,9 @@
         <origin rpy="0 0 -0.31" xyz="0.152 0.305 -0.05"/> <axis xyz="0 0 1" />
         <limit effort="87" lower="-0.4" upper="0.0" velocity="0.2" />
 	<!--
-        <mimic joint="clawl_joint" multiplier="-1" offset="0" />
-	-->
         <mimic joint="clawl_joint" />
+	-->
+        <mimic joint="clawl_joint" multiplier="-1" offset="0" />
     </joint>
 
 

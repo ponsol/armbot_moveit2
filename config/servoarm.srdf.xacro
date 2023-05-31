@@ -14,14 +14,16 @@
 
 
   <group_state name="open" group="hand">
-     <joint name="clawl_joint" value="0.035" />
-     <joint name="clawr_joint" value="0" />
+     <joint name="clawl_joint" value="0.4" />
+     <!--
+     <joint name="clawr_joint" value="-0.4" />
+     -->
   </group_state>
 
   <group_state name="close" group="hand">
      <joint name="clawl_joint" value="0" />
-     <joint name="clawr_joint" value="0" />
      <!--
+     <joint name="clawr_joint" value="0" />
      <joint name="hand_joint" value="0" />
      -->
   </group_state>
@@ -30,7 +32,7 @@
   <end_effector name="hand" parent_link="eef_link" group="hand" parent_group="arm" />
 
 
-
+    <disable_collisions link1="clawbase" link2="eef_link" reason="Never"/>
     <disable_collisions link1="clawbase" link2="lower_arm" reason="Never"/>
     <disable_collisions link1="clawbase" link2="platform" reason="Never"/>
     <disable_collisions link1="clawbase" link2="top_arm" reason="Never"/>
@@ -44,10 +46,6 @@
     <disable_collisions link1="clawr" link2="platform" reason="Never"/>
     <disable_collisions link1="clawr" link2="top_arm" reason="Never"/>
     <disable_collisions link1="clawr" link2="wrist" reason="Never"/>
-
-
-
-
 
 
     <disable_collisions link1="lower_arm" link2="platform" reason="Adjacent"/>

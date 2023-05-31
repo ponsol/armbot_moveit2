@@ -8,10 +8,6 @@
         <link name="clawl"/>
         <joint name="clawl_joint"/>
         <passive_joint name="clawr_joint"/>
-         <!--
-        <joint name="hand_joint"/>
-        <chain base_link="eef_link" tip_link="clawl"/>
-	 -->
     </group>
 
 
