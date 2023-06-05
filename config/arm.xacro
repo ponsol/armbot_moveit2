@@ -19,6 +19,32 @@
         <chain base_link="base_link" tip_link="eef_link"/>
     </group>
 
+    <group_state name="place" group="arm">
+      <joint name="base_joint" value="0.45378" />
+      <joint name="platform_joint" value="1.6580" />
+      <joint name="lower_joint" value="-2.14673" />
+      <joint name="top_joint" value="0.34906" />
+      <joint name="eef_joint" value="0.017" />
+    </group_state>
+
+
+    <group_state name="grasp" group="arm">
+      <joint name="base_joint" value="0.750483" />
+      <joint name="platform_joint" value="1.1344" />
+      <joint name="lower_joint" value="-1.8326" />
+      <joint name="top_joint" value="0.7854" />
+      <joint name="eef_joint" value="0.017" />
+    </group_state>
+
+
+
+    <group_state name="grasp_start" group="arm">
+      <joint name="base_joint" value="0.75049" />
+      <joint name="platform_joint" value="1.0" />
+      <joint name="lower_joint" value="0.017" />
+      <joint name="top_joint" value="0.017" />
+      <joint name="eef_joint" value="0.017" />
+    </group_state>
 
 
     <group_state name="ready" group="arm">

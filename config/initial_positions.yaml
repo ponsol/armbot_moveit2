@@ -1,7 +1,7 @@
 # Default initial positions for the servoarm  os2_control fake system
 initial_positions:
-  base_joint: 0.017
-  platform_joint: 0.017
+  base_joint: 0.75049
+  platform_joint: 1.0
   lower_joint: 0.017
   top_joint: 0.017
   clawl_joint: 0.017
