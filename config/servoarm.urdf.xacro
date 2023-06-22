@@ -10,7 +10,7 @@
 
 
     <xacro:arm_ros2_control name="ServoarmArmFakeSystem"   initial_positions_file="$(arg initial_positions_file)" ros2_control_hardware_type="$(arg ros2_control_hardware_type)"/>
-    <xacro:hand_ros2_control name="ServoarmHandFakeSystem" ros2_control_hardware_type="$(arg ros2_control_hardware_type)"/>
+    <xacro:hand_ros2_control name="ServoarmHandFakeSystem" initial_positions_file="$(arg initial_positions_file)" ros2_control_hardware_type="$(arg ros2_control_hardware_type)"/>
 
 
 </robot>

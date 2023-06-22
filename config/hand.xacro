@@ -7,14 +7,16 @@
         <link name="clawr"/>
         <link name="clawl"/>
         <joint name="clawl_joint"/>
+	<!--
+        <joint name="clawr_joint"/>
+	-->
         <passive_joint name="clawr_joint"/>
-    </group>
 
+    </group>
 
     <disable_collisions link1="clawbase" link2="clawr" reason="Adjacent" />
     <disable_collisions link1="clawbase" link2="clawl" reason="Adjacent" />
     <disable_collisions link1="clawr" link2="clawl" reason="Default" />
-
 
   </xacro:macro>
 </robot>

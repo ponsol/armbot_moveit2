@@ -43,9 +43,9 @@ joint_limits:
     has_acceleration_limits: true
     max_acceleration: 3.75
     has_jerk_limits: false
-  clawr_joint:
-    has_velocity_limits: true
-    max_velocity: 2.175
-    has_acceleration_limits: true
-    max_acceleration: 3.75
-    has_jerk_limits: false
+      #  clawr_joint:
+      #    has_velocity_limits: true
+      #    max_velocity: 2.175
+      #    has_acceleration_limits: true
+      #    max_acceleration: 3.75
+      #    has_jerk_limits: false

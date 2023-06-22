@@ -4,25 +4,13 @@
 
 
     <group name="arm">
-	    <!--
-        <link name="base_link"/>
-        <link name="platform"/>
-        <link name="lower_arm"/>
-        <link name="top_arm"/>
-        <link name="wrist"/>
-
-        <joint name="base_joint"/>
-        <joint name="platform_joint"/>
-        <joint name="lower_joint"/>
-        <joint name="top_joint"/>
-	    -->
         <chain base_link="base_link" tip_link="eef_link"/>
     </group>
 
     <group_state name="place" group="arm">
       <joint name="base_joint" value="0.45378" />
       <joint name="platform_joint" value="1.6580" />
-      <joint name="lower_joint" value="-2.14673" />
+      <joint name="lower_joint" value="-1.954" />
       <joint name="top_joint" value="0.34906" />
       <joint name="eef_joint" value="0.017" />
     </group_state>
@@ -74,19 +62,36 @@
 
     <virtual_joint name="virtual_joint" type="floating" parent_frame="world" child_link="base_link" />
 
-    <disable_collisions link1="base_link" link2="platform" reason="Adjacent"/>
-    <disable_collisions link1="base_link" link2="lower_arm" reason="Never"/>
 
-    <disable_collisions link1="lower_arm" link2="platform" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="base_link2" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="lower_arm" reason="Never"/>
+    <disable_collisions link1="base_link" link2="plate_bracket" reason="Never"/>
+    <disable_collisions link1="base_link" link2="plate_servo" reason="Never"/>
+    <disable_collisions link1="base_link" link2="platform_bracket" reason="Never"/>
+    <disable_collisions link1="base_link" link2="platform_servo" reason="Never"/>
+
+    <disable_collisions link1="base_link2" link2="plate_bracket" reason="Never"/>
+    <disable_collisions link1="base_link2" link2="plate_servo" reason="Never"/>
+    <disable_collisions link1="base_link2" link2="platform_bracket" reason="Adjacent"/>
+    <disable_collisions link1="base_link2" link2="platform_servo" reason="Never"/>
+
+    <disable_collisions link1="lower_arm" link2="plate_bracket" reason="Never"/>
+    <disable_collisions link1="lower_arm" link2="plate_servo" reason="Adjacent"/>
+    <disable_collisions link1="lower_arm" link2="top_arm" reason="Adjacent"/>
     <disable_collisions link1="lower_arm" link2="wrist" reason="Never"/>
 
-    <disable_collisions link1="top_arm" link2="lower_arm" reason="Adjacent"/>
+    <disable_collisions link1="plate_bracket" link2="plate_servo" reason="Adjacent"/>
+    <disable_collisions link1="plate_bracket" link2="platform_bracket" reason="Never"/>
+    <disable_collisions link1="plate_bracket" link2="platform_servo" reason="Adjacent"/>
 
-    <disable_collisions link1="wrist" link2="top_arm" reason="Adjacent"/>
-
-    <disable_collisions link1="platform" link2="wrist" reason="Never"/>
-
-
+    <disable_collisions link1="plate_bracket" link2="top_arm" reason="Never"/>
+    <disable_collisions link1="plate_bracket" link2="wrist" reason="Never"/>
+    <disable_collisions link1="plate_servo" link2="platform_bracket" reason="Never"/>
+    <disable_collisions link1="plate_servo" link2="platform_servo" reason="Never"/>
+    <disable_collisions link1="plate_servo" link2="top_arm" reason="Never"/>
+    <disable_collisions link1="plate_servo" link2="wrist" reason="Never"/>
+    <disable_collisions link1="platform_bracket" link2="platform_servo" reason="Adjacent"/>
+    <disable_collisions link1="top_arm" link2="wrist" reason="Adjacent"/>
 
   </xacro:macro>
 </robot>

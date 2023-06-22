@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-	<!--
-
-    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
-	-->
 
     <xacro:macro name="arm_ros2_control"  params="name initial_positions_file ros2_control_hardware_type">
     <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_positions']}"/>
@@ -13,17 +9,18 @@
 
             <hardware>
 
+
                 <xacro:if value="${ros2_control_hardware_type == 'mock_components'}">
                   <plugin>mock_components/GenericSystem</plugin>
                 </xacro:if>
-                <xacro:if value="${ros2_control_hardware_type == 'isaac'}">
+
+                <xacro:if value="${ros2_control_hardware_type == 'uros'}">
                     <plugin>topic_based_ros2_control/TopicBasedSystem</plugin>
-                    <param name="joint_commands_topic">/isaac_joint_commands</param>
-                    <param name="joint_states_topic">/isaac_joint_states</param>
+                    <param name="joint_commands_topic">/arm_joint_commands</param>
+                    <param name="joint_states_topic">/arm_joint_states</param>
                 </xacro:if>
 
             </hardware>
-
 
 
 

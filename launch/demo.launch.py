@@ -15,20 +15,15 @@ from moveit_configs_utils.launches import generate_demo_launch
 
 def generate_launch_description():
 
-
-    tutorial_arg = DeclareLaunchArgument(
-        "rviz_arm", default_value="False", description="Tutorial flag"
-    )
-
-    db_arg = DeclareLaunchArgument(
-        "db", default_value="False", description="Database flag"
+    rviz_flag = DeclareLaunchArgument(
+        "rviz_flag", default_value="False", description="Rviz flag"
     )
 
 
     ros2_control_hardware_type = DeclareLaunchArgument(
         "ros2_control_hardware_type",
         default_value="mock_components",
-        description="ROS2 control hardware interface -- possible values: [mock_components, isaac]",
+        description="ROS2 control hardware interface -- possible values: [mock_components, uros]",
     )
 
 
@@ -45,7 +40,7 @@ def generate_launch_description():
             publish_robot_description=True, publish_robot_description_semantic=True 
             #,publish_planning_scene=True,	publish_geometry_updates = True
           )
-          .trajectory_execution(file_path="config/gripper_moveit_controllers.yaml")
+          .trajectory_execution(file_path="config/moveit_controllers.yaml")
           .planning_pipelines(
             pipelines=["ompl", "chomp", "pilz_industrial_motion_planner"]
           )
@@ -70,7 +65,7 @@ def generate_launch_description():
     )
 
 
-    rviz_mode = LaunchConfiguration("rviz_arm")
+    rviz_mode = LaunchConfiguration("rviz_flag")
 
     rviz_base = os.path.join(
         get_package_share_directory("armbot_moveit2"), "launch"
@@ -151,24 +146,9 @@ def generate_launch_description():
         arguments=["hand_controller", "-c", "/controller_manager"],
     )
 
-
-    db_config = LaunchConfiguration("db")
-    mongodb_server_node = Node(
-        package="warehouse_ros_mongo",
-        executable="mongo_wrapper_ros.py",
-        parameters=[
-            {"warehouse_port": 33829},
-            {"warehouse_host": "localhost"},
-            {"warehouse_plugin": "warehouse_ros_mongo::MongoDatabaseConnection"},
-        ],
-        output="screen",
-        condition=IfCondition(db_config),
-    )
-
     return LaunchDescription(
         [
-            tutorial_arg,
-            db_arg,
+            rviz_flag,
             ros2_control_hardware_type,
             rviz_node,
             static_tf_node,
@@ -178,7 +158,5 @@ def generate_launch_description():
             joint_state_broadcaster_spawner,
             arm_controller_spawner,
             hand_controller_spawner,
-            mongodb_server_node,
         ]
     )
-    #return generate_demo_launch(moveit_config)
