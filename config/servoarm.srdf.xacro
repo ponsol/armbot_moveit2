@@ -14,18 +14,11 @@
 
 
   <group_state name="open" group="hand">
-     <joint name="clawl_joint" value="0.4" />
-     <!--
-     <joint name="clawr_joint" value="-0.4" />
-     -->
+     <joint name="clawl_joint" value="0.62" />
   </group_state>
 
   <group_state name="close" group="hand">
-     <joint name="clawl_joint" value="0" />
-     <!--
-     <joint name="clawr_joint" value="0" />
-     <joint name="hand_joint" value="0" />
-     -->
+     <joint name="clawl_joint" value="1.57" />
   </group_state>
 
 
